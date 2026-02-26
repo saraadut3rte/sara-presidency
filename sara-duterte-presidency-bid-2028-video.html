@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sara Duterti</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background-color: black;
+    }
+
+
+    video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        display: none; 
+    }
+
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 32px;
+        cursor: pointer;
+        text-align: center;
+        z-index: 10;
+        transition: background 0.5s;
+    }
+
+    .overlay:hover {
+        background: #111;
+    }
+</style>
+</head>
+<body>
+
+
+<video id="myVideo" src="vid.mp4" playsinline></video>
+
+
+<div class="overlay" id="playOverlay">
+    Click Anywhere to Play the Video
+</div>
+
+<script>
+const video = document.getElementById('myVideo');
+const overlay = document.getElementById('playOverlay');
+
+overlay.addEventListener('click', () => {
+    overlay.style.display = 'none';
+
+    video.style.display = 'block';
+
+    video.muted = false;
+    video.play();
+});
+</script>
+
+</body>
+</html>
